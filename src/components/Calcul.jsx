@@ -3,10 +3,7 @@ import React, { Component } from 'react'
 export default class Calcul extends Component {
     
     state = {
-        capital:0,
-        taux:0,
-        duree:0,
-        mensualite:0
+       
     }
 
     handleOnChange = (e) => {
@@ -19,19 +16,11 @@ export default class Calcul extends Component {
 
     calucler = () => {
 
-        const mensualite = (this.state.capital * this.state.taux / 1200) / (1 - Math.pow((1+this.state.taux/1200), -this.state.duree))
-
-        this.setState({mensualite})
-
+       
     }
 
     initialiser = () => {
-        this.setState({
-            capital:0,
-            taux:0,
-            duree:0,
-            mensualite:0
-        })
+        
     }
 
     render() {
@@ -39,24 +28,25 @@ export default class Calcul extends Component {
             <div className='calcul'>
                 <div className='form'>
                     <div className='group'>
-                        <label htmlFor="capital">Capital : </label>
-                        <input type="number" name="capital" id="capital" value={this.state.capital} onChange={this.handleOnChange}/>
+                        <label htmlFor="poids">Poids : </label>
+                        <input type="number" name="poids" id="poids" />
                     </div>
                     <div className='group'>
-                        <label htmlFor="taux">Taux d'interet : </label>
-                        <input type="number" name="taux" id="taux" value={this.state.taux} onChange={this.handleOnChange} />
+                        <label htmlFor="distance">Distance : </label>
+                        <input type="number" name="distance" id="distance"  />
                     </div>
                     <div className='group'>
-                        <label htmlFor="duree">Durée : </label>
-                        <input type="number" name="duree" id="duree" value={this.state.duree} onChange={this.handleOnChange} />
+                        <label htmlFor="mode">Mode : </label>
+                        <input type="radio" name="mode" id="express" value='express'  /> Express
+                        <input type="radio" name="mode" id="normal" value='normal' /> Normal
                     </div>
                     <div className='btns'>
                         <button onClick={this.calucler}>Calculer</button>
                         <button onClick={this.initialiser}>Initialiser</button>
                     </div>
                     <div className='group'>
-                        <label htmlFor="mensualite">Mensualité : </label>
-                        <input type="number" name="mensualite" id="mensualite" value={this.state.mensualite.toFixed(2)} onChange={this.handleOnChange} readOnly />
+                        <label htmlFor="cout">Cout total : </label>
+                        <input type="number" name="cout" id="cout" readOnly />
                     </div>
                 </div>
             </div>
